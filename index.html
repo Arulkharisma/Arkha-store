@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Screamous | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+    <!-- link ke file css -->
+    <link rel="stylesheet" href="css/style.css">
+
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -16,6 +19,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
         a{
             text-decoration: none;
             color: black;
@@ -30,18 +34,19 @@
         -webkit-transform: scale(1.08);
         transform: scale(1.08);
         }
-        *{
-            scroll-behavior: smooth;
+        i{
+            color: rgb(255, 189, 58);
         }
-        
-       
+        .icon{
+            color: black;
+        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg bg-light fixed-top ">
+<nav class="navbar navbar-expand-lg bg-light fixed-top fontnav fw-bold">
     <div class="container">
         <a class="navbar-brand fw-bold fs-4" href="#home"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -89,7 +94,7 @@
                 <p class="fw-bold pt-5 mt-5 fst-italic tes"> </p>
                 <h1 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">Temukan <span style="color: #ffffff;">Outfit</span><br><span style="color: #ffffff;">Impian </span>Anda<br>Disini</h1>
                 <p class="mt-4 fst-italic" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">Dapatkan Harga Spesial Hanya Disini!!</p>
-                <button type="button" class="btn text-black mt-2" style="background-color: #ffffff;" data-aos="fade-rigt" data-aos-duration="500" data-aos-delay="1200">Pesan Sekarang <i class="bi bi-arrow-right" style="color: black;"></i></button>
+                <a href="#produkTerbaru"><button type="button" class="btn text-black mt-2" style="background-color: #ffffff;" data-aos="fade-rigt" data-aos-duration="500" data-aos-delay="1200">Pesan Sekarang <i class="bi bi-arrow-right" style="color: black;"></i></button></a>
             </div>
 
             <div class="col-lg-6 text-center justify-content-center">
@@ -277,7 +282,7 @@
         <div class="row offset-md-1">
 
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                <p class="fw-bold">Informasi</p>
+                <p class="fw-bold garisbawah">Informasi</p>
                 <li class="list-group-item">Konfirmasi Pembayaran</li>
                 <li class="list-group-item ">Syarat Ketentuan Retur</li>
                 <li class="list-group-item ">Pengiriman</li>
@@ -285,7 +290,7 @@
             </div>
 
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                <p class="fw-bold">Social Media</p>
+                <p class="fw-bold garisbawah">Social Media</p>
                 <li class="list-group-item"><a href="https://www.instagram.com/arulkharisma/"><i
                             class="bi bi-instagram me-2 icon"></i> Instagram</a></li>
                 <li class="list-group-item"><a href="https://www.facebook.com/Arul/"><i
@@ -297,19 +302,19 @@
             </div>
 
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                <p class="fw-bold">Kontak</p>
+                <p class="fw-bold garisbawah">Kontak</p>
                 <li class="list-group-item"><i class="bi bi-telephone-fill me-2 icon"></i> 087846079991</a></li>
                 <li class="list-group-item"><i class="bi bi-envelope me-2 icon"></i> arulkharisma01@gmail.com</a></li>
                 <li class="list-group-item"><i class="bi bi-geo-alt-fill me-2 icon"></i> Jl.raya Lembar Mataram</li>
             </div>
 
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                <p class="fw-bold">Pembayaran</p>
+                <p class="fw-bold garisbawah">Pembayaran</p>
                 <li class="list-group-item mb-1"><img src="img/seabank.png" alt="seabank"> <img src="img/bca.png" alt="bca"> <img src="img/bni.png" alt="bni"></li>
                 <li class="list-group-item mb-1"><img src="img/bri.png" alt="bri"> <img src="img/cimniaga.png" alt="cimbniaga"> <img src="img/visa.png" alt="visa"></li>
                 <li class="list-group-item mb-4 mb-1"><img src="img/indomaret.png" alt="indomaret"> <img src="img/alfamart.png" alt="alfamart"></li>
 
-                <p class="fw-bold">Pengiriman</p>
+                <p class="fw-bold garisbawah">Pengiriman</p>
                 <li class="list-group-item mb-1"><img src="img/jne.png" alt="jne"> <img src="img/jnt.png" alt=" jnt"> <img src="img/jntcargo.png" alt=""></li>
                 <li class="list-group-item mb-1"><img src="img/anteraja.png" alt="anteraja"> <img src="img/indopaket.png" alt="indopaker"> <img src="img/ninjaexpres.png" alt="ninjaexpres"></li>
                 <li class="list-group-item mb-1"><img src="img/idexpres.png" alt="idexpres"></li>
