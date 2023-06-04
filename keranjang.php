@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Screamous | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
-    <!-- link ke file css -->
-    <link rel="stylesheet" href="css/style.css">
-
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+
     <!-- AOS animasi -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- JQUERY -->
+    <script src="jquery.min.js"></script>
+
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -27,6 +33,7 @@
 
         body {
             font-family: 'Jost', sans-serif;
+            background-color: #f6f5f5;
         }
 
         .garisbawah {
@@ -53,7 +60,7 @@
         }
 
         i {
-            color: rgb(255, 189, 58);
+            color: #ffffff;
         }
 
         .navbar-expand-lg .navbar-nav {
@@ -69,6 +76,13 @@
             gap: 20px;
         }
 
+        .bi-trash::before {
+            padding: 7px;
+            background-color: #eb3d6b;
+            border-radius: 4px;
+            vertical-align: middle;
+        }
+
         .icon {
             color: black;
         }
@@ -77,6 +91,38 @@
             border-bottom: 2px solid black;
             margin: 0;
         }
+
+        .bi-plus::before,
+        .bi-dash::before {
+            vertical-align: middle;
+        }
+
+        .navbtn:hover {
+            background-color: #1887d1;
+        }
+
+        .border-b {
+            border-bottom: 1px solid black;
+            width: max-content;
+        }
+
+        .tampilan-form {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .isi-table-tengah {
+            vertical-align: middle;
+        }
+
+        .form-check-input:checked[type=checkbox],
+        .form-check .form-check-input {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
     </style>
 
 </head>
@@ -114,7 +160,7 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</button>
+                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -125,69 +171,135 @@
     </nav>
     <!-- Akhir Navbar -->
 
+    <?php
+    include 'koneksi.php';
+    $id_produk = $_GET["id_produk"];
+    $hasil = mysqli_query($koneksi, "SELECT * FROM data_produk WHERE id_produk ='$id_produk'");
+    $cetak = mysqli_fetch_assoc($hasil);
+    ?>
 
-    <section id="keranjang">
-        <div class="container mt-5 pt-5">
-            <div class="row">
-                <div class="col">
-                    <h4 style="border-bottom:2px solid black ; width: max-content;">My Cart</h4>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-8">
-                    <div class="bg-light p-3" style="width: 100%;">
-                        <span class="fw-bold" style="margin-left: 20px; margin-right: 400px;">Products</span>
-                        <span class="fw-bold" style="margin-right: 80px;">Harga</span>
-                        <span class="fw-bold " style="margin-right: 30px;">Jumlah</span>
-                        <span class="fw-bold">Total</span>
-                    </div>
-                    <div class="p-3 mt-3" style=" border: 1px solid rgb(232, 232, 232);">
-                        <img src="img/produk 11.jpeg" width="95px" height="105px" alt="">
-                        <span class="fw-bold" style="margin-right: 190px;">Hoodie Neue Crown Black</span>
-                        <span class="fw-bold">RP 180.000</span>
-                        <span class="p-2 ms-5" style="border: 1px solid rgb(221, 221, 221);">1x</span>
-                        <span class="fw-bold ms-5">RP 180.000</span>
-                    </div>
-                    <div class="p-3 mt-3" style=" border: 1px solid rgb(232, 232, 232);">
-                        <img src="img/produk 11.jpeg" width="95px" height="105px" alt="">
-                        <span class="fw-bold" style="margin-right: 190px;">Hoodie Neue Crown Black</span>
-                        <span class="fw-bold">RP 180.000</span>
-                        <span class="p-2 ms-5" style="border: 1px solid rgb(221, 221, 221);">1x</span>
-                        <span class="fw-bold ms-5">RP 180.000</span>
-                    </div>
-                    <div class="mt-4">
-                        <p>Tambahkan Komentar</p>
-                        <textarea name="Komentar" id="komentar" cols="90" rows="5"></textarea>
-                    </div>
 
-                </div>
-                <div class="col-lg-4 p-3" style="border: 1px solid grey;">
-                    <span class="fw-bold" style="border-bottom: 1px solid black;">Total Order</span>
-                    <div class="mt-4 fw-bold p-2" style="border-bottom: 1px solid grey;">
-                        <span class="me-5 pe-5">Sub Total</span><span class="ms-5 ps-5">RP 360.000</span>
-                    </div>
-                    <div class="mt-3 p-2">
-                        <span class="me-5 pe-4">Ongkos Kirim <i class="bi bi-truck me-2"></i></span><span class="ms-5 ps-4">RP 25.000</span>
-                    </div>
-                    <div class="mt-3 p-2">
-                        <span class="me-5 pe-5">Voucher Diskon <i class="bi bi-tags"></i></span><span class="ms-4 ps-3">RP 45.000</span>
-                    </div>
-                    <div class="mt-4 p-2 fw-bold" style="border-bottom: 1px solid grey;">
-                        <span class="me-5 pe-5">Sub Total</span><span class="ms-5 ps-5">RP 340.000</span>
-                    </div>
-                    <div class="mt-4 text-center text-white p-3" style="background-color: #1887d1;">
-                        <span>Chekout Sekarang</span>
-                    </div>
-                    <div class="mt-4 text-center text-black p-3" style="border: 1px solid #1887d1;">
-                        <span>Tambahkan Produk Lain</span>
-                    </div>
+    <section id="keranjang" class="pt-3 mb-3">
+        <div class="container">
 
+            <h3 class="border-b mt-3 pt-2">Keranjang</h3>
+
+            <div class="row mt-3 gap-4" style="justify-content: space-between;">
+
+                <div class="col-lg-12">
+                    <div class="tampilan-form spinner">
+
+                        <form action="" method="post">
+
+                            <h3 class="fw-bold mb-4">Detail Keranjang</h3>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Gambar</th>
+                                        <th scope="col">Nama Produk</th>
+                                        <th scope="col" class="text-center">Jumlah</th>
+                                        <th scope="col">Harga</th>
+                                        <th scope="col">Sub Harga</th>
+                                        <th scope="col"></th>
+
+                                    </tr>
+                                </thead>
+
+                                <tr>
+                                    <td class="isi-table-tengah">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked"></label>
+                                        </div>
+                                    </td>
+                                    <td><img src="img/hoodie1.jpeg" width="80px" height="80px" alt=""></td>
+                                    <td class="isi-table-tengah">Hoodie new crown black</td>
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
+                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
+                                        <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
+                                    </td>
+                                    <td class="isi-table-tengah">Rp 300.000</td>
+                                    <td class="isi-table-tengah">Rp 600.000</td>
+                                    <td class="isi-table-tengah"><a href="#"><i class="bi bi-trash"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="isi-table-tengah">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked"></label>
+                                        </div>
+                                    </td>
+                                    <td><img src="img/celana3.jpeg " width="80px" height="80px" alt=""></td>
+                                    <td class="isi-table-tengah"> Unclejin Hoodie new crown black</td>
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
+                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
+                                        <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
+                                    </td>
+                                    <td class="isi-table-tengah">Rp 400.000</td>
+                                    <td class="isi-table-tengah">Rp 800.000</td>
+                                    <td class="isi-table-tengah"><a href=" #"><i class="bi bi-trash"></i></a></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="isi-table-tengah">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked"></label>
+                                        </div>
+                                    </td>
+                                    <td><img src="img/thsirt4.jpeg" width="80px" height="80px" alt=""></td>
+                                    <td class="isi-table-tengah">Hoodie new crown black</td>
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
+                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
+                                        <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
+                                    </td>
+                                    <td class="isi-table-tengah">Rp 50.000</td>
+                                    <td class="isi-table-tengah">Rp 50.000</td>
+                                    <td class="isi-table-tengah"><a href=" #"><i class="bi bi-trash"></i></a></td>
+                                </tr>
+
+                            </table>
+                            <script>
+                                $(function() {
+                                    $('.spinner #plus-btn').on('click', function() {
+                                        var btn = $(this);
+                                        var input = btn.closest('.spinner').find('input');
+                                        if (input.attr('max') == undefined || parseInt(input
+                                                .val()) <
+                                            parseInt(input.attr('max'))) {
+                                            input.val(parseInt(input.val(), 10) + 1);
+                                        } else {
+                                            btn.next("disabled", true);
+                                        }
+                                    });
+                                    $('.spinner #minus-btn').on('click',
+                                        function() {
+                                            var btn = $(this);
+                                            var input = btn.closest('.spinner').find('input');
+                                            if (input.attr('min') == undefined || parseInt(input
+                                                    .val()) >
+                                                parseInt(input.attr('min'))) {
+                                                input.val(parseInt(input.val(), 10) - 1);
+                                            } else {
+                                                btn.prev("disabled", true);
+                                            }
+                                        });
+                                })
+                            </script>
+
+                            <a href="chekout.php" class="btn text-white me-3 mt-3" style="background-color: royalblue;">Buat Pesanan</a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
 
     <footer id="kontak" class="pb-3 bg-light mt-5">
         <div class="container pt-3" style="border-bottom: 1px solid grey;">

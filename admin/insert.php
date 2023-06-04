@@ -76,11 +76,17 @@
             return false;
         }
 
+        //generate nama Gambar
+        $namaFileBaru = uniqid();
+        $namaFileBaru .= '.';
+        $namaFileBaru .= $ekstensiGambar;
+
         // upload gambar --> jika ketiga kondisi diatas terpenuhi, gambar siap di upload
-        move_uploaded_file($tmpName, 'img/fotoProduk/' . $namaFile);
+        move_uploaded_file($tmpName, 'img/fotoProduk/' . $namaFileBaru);
 
         // $photo = htmlspecialchars($_POST["photo"]); 
-        $gambarProduk = $namaFile;
+
+        $gambarProduk = $namaFileBaru;
 
         $query = "INSERT INTO data_produk (id_produk,id_kategori,nama_produk,harga_produk,stok_produk,produk_terjual,gambar_produk, deskripsi_produk) VALUE('','$idkategori','$namaProduk', '$harga', '$stok','$produkTerjual', '$gambarProduk', '$deskripsi')";
 

@@ -280,7 +280,7 @@
 
                         <div class="mt-5 col-lg-12">
                             <button type="submit" class="p-3" name="keranjang" style="border: 1px solid #1887d1; background-color: #a5d3f2; cursor: pointer; border-radius: 4px;"><i class=" bi bi-cart-plus "></i> Masukkan Keranjang</button>
-                            <a href=" #"><span class="ms-3 pt-3 pb-3 ps-4 pe-4 text-white tombol" style="border: 1px solid #1887d1; background-color: #1887d1; cursor: pointer; border-radius: 5px;"> Beli Sekarang</span></a>
+                            <a href="chekout.php"><span class="ms-3 pt-3 pb-3 ps-4 pe-4 text-white tombol" style="border: 1px solid #1887d1; background-color: #1887d1; cursor: pointer; border-radius: 5px;"> Beli Sekarang</span></a>
                         </div>
                     </form>
 

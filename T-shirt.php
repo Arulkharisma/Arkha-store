@@ -79,7 +79,7 @@
             margin: 0;
         }
 
-        .list-nav-active{
+        .list-nav-active {
             border-bottom: 2px solid black;
         }
     </style>
@@ -119,7 +119,7 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</button>
+                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>

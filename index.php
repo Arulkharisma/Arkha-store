@@ -69,6 +69,10 @@
             gap: 20px;
         }
 
+        .bi-arrow-right::before{
+            vertical-align: middle;
+        }
+        
         .icon {
             color: black;
         }
@@ -82,8 +86,16 @@
             border-bottom: 2px solid black;
         }
 
-        .navbtn:hover{
-            background-color: #1887d1;
+        .background2 {
+            height: 100vh;
+            width: 100%;
+            background: rgba(247, 250, 255, 0.9);
+            backdrop-filter: blur(125px);
+        }
+
+        .navbtn:hover {
+            background-color: royalblue;
+            color: #000000;
         }
     </style>
 </head>
@@ -95,9 +107,9 @@
 
     <!-- Navbar -->
 
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top bg-transparent">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="#home"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4" href="#home"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span>&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -124,7 +136,7 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid #1887d1; border-radius: 10px;">Login</a>
+                        <a href="login.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px;">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -137,54 +149,50 @@
 
     <!-- Home -->
 
-    <section id="home" class="pt-2 mt-1" style="background-image: linear-gradient(97deg, rgba(24,135,209,1) 0%, rgba(255,255,255,1) 70%);">
-        <div class="container">
-            <div class="row mt-4">
-                <div class="col-lg-6 mt-4 justify-content-center">
-                    <p class="fw-bold pt-5 mt-5 fst-italic tes"> </p>
-                    <h1 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">Temukan <span style="color: #ffffff;">Outfit</span><br><span style="color: #ffffff;">Impian </span>Anda<br>Disini</h1>
-                    <p class="mt-4 fst-italic" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">Dapatkan Harga Spesial Hanya Disini!!</p>
-                    <a href="#produkTerbaru"><button type="button" class="btn text-black mt-2" style="background-color: #ffffff;" data-aos="fade-rigt" data-aos-duration="500" data-aos-delay="1200">Pesan Sekarang <i class="bi bi-arrow-right" style="color: black;"></i></button></a>
-                </div>
+    <section id="home" style="background: linear-gradient(90deg, #0500FF 0.52%, #F8FB76 35.41%, #4EFF75 63.63%, #00FFD1 99.03%); backdrop-filter: blur(125px);">
+        <div class="background2">
 
-                <div class="col-lg-6 text-center justify-content-center">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                        <div class="carousel-indicators mt-5" style="justify-content: center;">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active text-bg-dark mt-5" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="text-bg-dark mt-5"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="text-bg-dark mt-5"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class="text-bg-dark mt-5"></button>
-                        </div>
-                        <div class="carousel-inner mt-4 pt-2 zoom-efect" style="justify-content: center;">
-                            <div class="carousel-item active justify-content-center kotak" data-aos="zoom-in-down" data-aos-duration="1000">
-                                <img src="img/thumnail 4.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="100%" height="580px" alt="sumber instagram Unclejin">
-                            </div>
-                            <div class="carousel-item justify-content-center kotak">
-                                <img src="img/thumbnail 2.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
-                            </div>
-                            <div class="carousel-item justify-content-center kotak">
-                                <img src="img/thumbnail 3.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
-                            </div>
-                            <div class="carousel-item justify-content-center kotak">
-                                <img src="img/thumnail 1.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden me-5">Previous</span>
-                        </button>
-                        <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+
+            <div class="container">
+                <div class="row" style="padding-top: 50px;">
+                    <div class="col-lg-6 mt-4 justify-content-center">
+                        <p class="fw-bold pt-5 mt-5 fst-italic tes"> </p>
+                        <h1 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">Temukan <span style="color: royalblue;">Outfit</span><br><span style="color: royalblue;">Impian </span>Anda<br>Disini</h1>
+                        <p class="mt-4 fst-italic" data-aos="fade-right" data-aos-duration="500" data-aos-delay="500">Dapatkan Harga Spesial Hanya Disini!!</p>
+                        <a href="#produkTerbaru" class="av-link p-2 navbtn" data-aos="fade-rigt" data-aos-duration="500" data-aos-delay="1200" style="border: 2px solid royalblue; border-radius: 10px;">Pesan Sekarang <i class=" bi bi-arrow-right" style="color: black;"></i></button></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col ms-2">
-                        <a href="https://www.instagram.com/arulkharisma/" class=" text-black me-1 fs-5 "><i class="bi bi-instagram text-white"></i></a>
-                        <a href="https://www.facebook.com/Arul/" class=" text-black me-1 fs-5 "><i class="bi bi-facebook text-white"></i></a>
-                        <a href="https://www.twitter.com/arulkharisma/" class="text-black fs-5 me-1 "><i class="bi bi-twitter text-white"></i></a>
-                        <a href="https://wa.me/087846079991" class="text-black fs-5 me-1 "><i class="bi bi-whatsapp text-white"></i></a>
+
+                    <div class="col-lg-6 text-center justify-content-center">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-indicators mt-5" style="justify-content: center;">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active text-bg-dark mt-5" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="text-bg-dark mt-5"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="text-bg-dark mt-5"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" class="text-bg-dark mt-5"></button>
+                            </div>
+                            <div class="carousel-inner mt-4 pt-2 zoom-efect" style="justify-content: center;">
+                                <div class="carousel-item active justify-content-center kotak" data-aos="zoom-in-down" data-aos-duration="1000">
+                                    <img src="img/thumnail 4.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="100%" height="580px" alt="sumber instagram Unclejin">
+                                </div>
+                                <div class="carousel-item justify-content-center kotak">
+                                    <img src="img/thumbnail 2.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
+                                </div>
+                                <div class="carousel-item justify-content-center kotak">
+                                    <img src="img/thumbnail 3.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
+                                </div>
+                                <div class="carousel-item justify-content-center kotak">
+                                    <img src="img/thumnail 1.jpg" class=" d-block mt-3 img-fluid rounded float-left" width="630px" height="580px" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden me-5">Previous</span>
+                            </button>
+                            <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

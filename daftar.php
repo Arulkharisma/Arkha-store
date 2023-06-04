@@ -14,9 +14,13 @@
 
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="jquery.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -66,6 +70,20 @@
             gap: 20px;
         }
 
+        .tampilan-form {
+            background-color: #ffffff;
+            padding: 25px 50px;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            /* width: 30%; */
+        }
+
+        /* .judul {
+            width: 30%;
+        } */
+
         .icon {
             color: black;
         }
@@ -110,7 +128,7 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</button>
+                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -121,48 +139,93 @@
     </nav>
     <!-- Akhir Navbar -->
 
+    <?php
+    include 'koneksi.php';
+
+    if (isset($_POST["input"])) {
+
+        $username = strtolower(stripslashes($_POST["username"]));
+        $password = mysqli_real_escape_string($koneksi,  $_POST["password"]);
+        $confirmPass = mysqli_real_escape_string($koneksi,  $_POST["passwordconfirm"]);
+
+        // mengecek ketersediaan username
+        $cekUser = mysqli_query($koneksi, "SELECT username FROM user WHERE username = '$username'");
+        if (mysqli_fetch_assoc($cekUser)) :
+            echo "
+            <script>
+            alert('username sudah terdaftar');
+            document.location.href='daftar.php';
+            </script>
+            ";
+            return false;
+        endif;
+
+
+        //Mengecek konfirmasi password
+        if ($password !== $confirmPass) :
+            echo "
+            <script>
+            alert('konfirmasi password tidak sesuai');
+            document.location.href='daftar.php';
+            </script>
+            ";
+            return false;
+        endif;
+
+        // menambahkan user ke database
+        $tambahUser = "INSERT INTO user VALUES('', '$username', '$password')";
+        mysqli_query($koneksi, $tambahUser);
+
+        if ($tambahUser > 1) {
+            echo "
+            <script>
+            alert('akun berhasil dibuat');
+            document.location.href='login.php';
+            </script>
+            ";
+        }
+
+        // enkripsi password
+        // $password = password_hash($password, PASSWORD_DEFAULT);
+
+    }
+    ?>
+
     <!-- section -->
-    <section id="login" class="jumbotron mt-5">
-        <div class="container mt-2 pt-3 mb-5">
-            <div class="row mt-5 justify-content-center">
-                <div class="col-lg-4">
-                    <h2 class="mb-6 text-center fw-bold">Daftar</h2>
-                    <form>
+    <section id="input" class="mt-3" style="height: 100vh;">
+        <div class="container mt-5 pt-5">
+
+            <div class="row justify-content-center">
+                <div class=" col-4 tampilan-form mt-5">
+                    <div class="logo fw-bold mb-4 fs-5" style="display: flex; justify-content: center; align-items: flex-end;">
+                        <img src="img/logo.png" width="40px" height="40px" alt=""> Arkha&Co
+                    </div>
+
+                    <form method="post" action="" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="Password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" aria-describedby="password">
-                        </div>
-                        <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" aria-describedby="alamat">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nohp" class="form-label">No HP</label>
-                            <input type="text" class="form-control" id="nohp" aria-describedby="nohp">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control border-primary" id="username" name="username" autocomplete="off" required>
                         </div>
 
-                        <div class="d-grid">
-                            <button class="btn text-white mt-5 mb-5" name="daftar" type="button" style="background-color: #1887d1;">Daftar</button>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control border-primary" id="password" name="password" required>
                         </div>
 
-                        <p>Sudah Punya akun ? <a href="login.html" style="text-decoration: none; color: #1887d1;">Masuk</a></p>
+                        <div class="mb-3">
+                            <label for="passwordconfirm" class="form-label">Konfirmasi Password</label>
+                            <input type="password" class="form-control border-primary" id="passwordconfirm" name="passwordconfirm" required>
+                        </div>
+
+                        <button type="submit" class="btn text-white flex col-4" style="background-color: royalblue;" name="input">Daftar</button>
+
+                        <p class="mt-4">Sudah punya akun? silahkan <a href="login.php">Login</a></p>
+
                     </form>
                 </div>
-
-            </div>
-            <div class=" position-absolute bottom-0 end-0">
-                <p class="me-2"><a href="https://wa.me/087846079991" style="color: #1887d1;"> Order Via Chat
-                        <img src="img/whatsapp.png" href="#" class="ms-2" width="30" height="30" alt="whatsapp"></a></p>
             </div>
 
+        </div>
     </section>
     <!-- akhir section -->
 
