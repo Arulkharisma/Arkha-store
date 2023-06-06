@@ -4,15 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
 
     <!-- AOS animasi -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -24,8 +23,6 @@
 
     <!-- JQUERY -->
     <script src="jquery.min.js"></script>
-
-
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -98,7 +95,7 @@
         }
 
         .navbtn:hover {
-            background-color: #1887d1;
+            background-color: royalblue;
         }
 
         .border-b {
@@ -133,7 +130,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -179,12 +176,10 @@
     ?>
 
 
-    <section id="keranjang" class="pt-3 mb-3">
+    <section id="keranjang" class="pt-3" style="height: 100vh; background-color: #ffffff;">
         <div class="container">
 
-            <h3 class="border-b mt-3 pt-2">Keranjang</h3>
-
-            <div class="row mt-3 gap-4" style="justify-content: space-between;">
+            <div class="row pt-5 gap-4" style="justify-content: space-between;">
 
                 <div class="col-lg-12">
                     <div class="tampilan-form spinner">
@@ -301,7 +296,7 @@
         </div>
     </section>
 
-    <footer id="kontak" class="pb-3 bg-light mt-5">
+    <footer id="kontak" class="pb-3 bg-light">
         <div class="container pt-3" style="border-bottom: 1px solid grey;">
             <div class="row offset-md-1">
 

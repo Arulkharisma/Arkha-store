@@ -1,18 +1,43 @@
+<?php
+
+include 'koneksi.php';
+
+if (isset($_POST["input"])) {
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $hasil = mysqli_query($koneksi, "SELECT * FROM user WHERE username = '$username' AND password = '$password'");
+
+    // Validasi password yang sudah di hash
+    //  $row = mysqli_fetch_assoc($hasil);
+    // if(mysqli_num_rows($hasil) === 1 && password_verify($password, $row["password"])){
+
+    //cek Username dan password
+    if (mysqli_num_rows($hasil)) {
+        echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+        exit;
+        // cek Password
+    }
+    $eror = true;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+
     <!-- link ke file css -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
-    
+
     <!-- bootstrap icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -21,6 +46,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="jquery.min.js"></script>
 
     <style>
@@ -54,10 +81,6 @@
             transform: scale(1.08);
         }
 
-        i {
-            color: rgb(255, 189, 58);
-        }
-
         .navbar-expand-lg .navbar-nav {
             gap: 15px;
         }
@@ -69,6 +92,17 @@
             font-size: 17px;
             color: #000000;
             gap: 20px;
+        }
+
+        .tampilan-form {
+            background-color: #ffffff;
+            padding: 35px 60px;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            width: auto;
+            /* width: 30%; */
         }
 
         .icon {
@@ -88,7 +122,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top ">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -127,41 +161,41 @@
     <!-- Akhir Navbar -->
 
     <!-- section -->
-    <section id="login" class="jumbotron mt-5">
-        <div class="container mt-5 pt-5 mb-5">
-            <div class="row mt-5 justify-content-center">
-                <div class="col-lg-3">
-                    <h2 class="mb-5 text-center">Login</h2>
-                    <form>
+    <?php
+    if (isset($eror)) :
+        echo "<script type='text/javascript'>swal('Login Gagal!', 'Username Dan Password Anda Salah', 'info');</script>"; ?>
+    <?php endif; ?>
+
+    <section id="input" class="mt-3" style="height: 100vh;">
+        <div class="container mt-5 pt-5">
+
+            <div class="row justify-content-center">
+                <div class=" col-5 tampilan-form mt-5">
+                    <div class="logo fw-bold mb-4 fs-5" style="display: flex; justify-content: center; align-items: flex-end;">
+                        <img src="img/logo.png" width="40px" height="40px" alt=""> Arkha&Co
+                    </div>
+
+                    <form method="post" action="" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailhelp">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control border-primary" id="username" name="username" autocomplete="off" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="Password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" aria-describedby="passwordhelp">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control border-primary" id="password" name="password" required>
+                            <p class="text-primary" style="display: flex; justify-content: flex-end;">Lupa Password?</p>
                         </div>
 
-                        <div class="d-grid">
-                            <button class="btn text-white mt-5 mb-5" type="button" style="background-color: #1887d1;">Masuk</button>
-                        </div>
+                        <button type="submit" class="btn text-white flex col-4" style="background-color: royalblue;" name="input">Login</button>
 
-                        <p>Belum Punya akun ? <a href="daftar.html" style="text-decoration: none; color: #1887d1;">buat akun baru</a></p>
+                        <p class="mt-4">belum punya akun? silahkan <a href="daftar.php" style="color: royalblue;">Daftar</a></p>
+
                     </form>
                 </div>
+                <!-- <p class="fs-5" style="display: flex; align-items: flex-end;">Order Via Whatshapp <i class="bi bi-whatsapp"></i></p> -->
             </div>
-            <div class="row mt-5">
-                <div class="col mt-5 pt-3">
-                    <div class="position-relative">
-                        <div class=" position-absolute bottom-0 end-0">
-                            <p class="me-2"><a href="https://wa.me/087846079991" style="color: #1887d1;"> Order Via Chat <img src="img/whatsapp.png" href="#" class="ms-2" width="30" height="30" alt="whatsapp"></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+        </div>
     </section>
     <!-- akhir section -->
 

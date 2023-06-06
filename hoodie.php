@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+
     <!-- link ke file css -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -18,6 +19,7 @@
     <!-- AOS animasi -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
@@ -68,6 +70,8 @@
             font-size: 17px;
             color: #000000;
             gap: 20px;
+            width: max-content;
+
         }
 
         .icon {
@@ -81,6 +85,7 @@
 
         .list-nav-active {
             border-bottom: 2px solid black;
+            width: max-content;
         }
     </style>
 
@@ -92,7 +97,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -135,7 +140,7 @@
         <div class="container">
             <div class="row mt-lg-5">
                 <div class="col">
-                    <h4 class="mt-2" style="border-bottom: 2px solid black; width: max-content;">Hoodie & Jacket</h4>
+                    <h4 class="mt-2" style="border-bottom: 2px solid hotpink; width: max-content; color: royalblue;">Hoodie & Jacket</h4>
                 </div>
             </div>
 

@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+
     <!-- link ke file css -->
     <link rel="stylesheet" href="css/style.css">
-
-
 
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -20,6 +19,7 @@
     <!-- AOS animasi -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <!-- sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="jquery.min.js"></script>
 
@@ -91,7 +91,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -118,7 +118,7 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</button>
+                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -288,13 +288,14 @@
                     if (isset($_POST['keranjang'])) {
                         $jumlah = $_POST['stok'];
 
-                        if ($jumlah >= 0) {
+                        if ($jumlah > 0) :
                     ?>
                             <script type='text/javascript'>
                                 swal("Di masukkan ke keranjang", "Klik Ok Untuk Melanjutkan", "success");
                             </script>
                     <?php
-                        }
+                        endif;
+                        
                     }
                     ?>
 

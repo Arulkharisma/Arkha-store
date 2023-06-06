@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
     <!-- link ke file css -->
     <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="jquery.min.js"></script>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -72,11 +75,12 @@
 
         .tampilan-form {
             background-color: #ffffff;
-            padding: 25px 50px;
+            padding: 25px 60px;
             border-radius: 15px;
             justify-content: center;
             align-items: center;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            width: auto;
             /* width: 30%; */
         }
 
@@ -101,7 +105,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-light fixed-top fontnav">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -150,25 +154,30 @@
 
         // mengecek ketersediaan username
         $cekUser = mysqli_query($koneksi, "SELECT username FROM user WHERE username = '$username'");
-        if (mysqli_fetch_assoc($cekUser)) :
-            echo "
-            <script>
-            alert('username sudah terdaftar');
-            document.location.href='daftar.php';
+        if (mysqli_fetch_assoc($cekUser)) {
+    ?>
+            <script type='text/javascript'>
+                swal('', 'Username Sudah Terdaftar', 'info')
+                    .then((value) => {
+                        document.location.href = 'daftar.php';
+                    });
             </script>
-            ";
+        <?php
+
             return false;
-        endif;
+        }
 
 
         //Mengecek konfirmasi password
         if ($password !== $confirmPass) :
-            echo "
+        ?>
             <script>
-            alert('konfirmasi password tidak sesuai');
-            document.location.href='daftar.php';
+                swal('', 'Konfirmasi Password Tidak Sesuai', 'info')
+                    .then(() => {
+                        document.location.href = 'daftar.php';
+                    });
             </script>
-            ";
+        <?php
             return false;
         endif;
 
@@ -177,12 +186,14 @@
         mysqli_query($koneksi, $tambahUser);
 
         if ($tambahUser > 1) {
-            echo "
+        ?>
             <script>
-            alert('akun berhasil dibuat');
-            document.location.href='login.php';
+                swal('', 'akun berhasil dibuat', 'success')
+                    .then(() => {
+                        document.location.href = 'login.php';
+                    });
             </script>
-            ";
+    <?php
         }
 
         // enkripsi password
@@ -215,11 +226,12 @@
                         <div class="mb-3">
                             <label for="passwordconfirm" class="form-label">Konfirmasi Password</label>
                             <input type="password" class="form-control border-primary" id="passwordconfirm" name="passwordconfirm" required>
+                            <p class="text-primary" style="display: flex; justify-content: flex-end;">Lupa Password?</p>
                         </div>
 
                         <button type="submit" class="btn text-white flex col-4" style="background-color: royalblue;" name="input">Daftar</button>
 
-                        <p class="mt-4">Sudah punya akun? silahkan <a href="login.php">Login</a></p>
+                        <p class="mt-4">Sudah punya akun? silahkan <a href="login.php" style="color: royalblue;">Login</a></p>
 
                     </form>
                 </div>

@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Screamous | By Arul Kharisma</title>
+    <title>Arkha&Co | By Arul Kharisma</title>
     <link rel="icon" href="img/logo.png">
+
     <!-- link ke file css -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -67,6 +68,7 @@
             font-size: 17px;
             color: #000000;
             gap: 20px;
+            width: max-content;
         }
 
         .icon {
@@ -80,6 +82,7 @@
 
         .list-nav-active {
             border-bottom: 2px solid black;
+            width: max-content;
         }
     </style>
 
@@ -91,7 +94,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:#1887d1;">Arkha</span><span>&co</span></a>
+            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -147,7 +150,7 @@
                 </div>
 
                 <div class="col-lg-9 mt-4 text-center">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.8585353962767!2d110.39204391469512!3d-7.804797094375705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57658f5b34db%3A0xb03acdeecf810007!2sMasjid%20Mujahidin!5e0!3m2!1sid!2sid!4v1672400552557!5m2!1sid!2sid" width="1000" height="550" style="border: 1px solid #1887d1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26469.2647699914!2d107.58021739985742!3d-6.9052847833611715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e649b130ed7d%3A0xeb4b3ec7738cbe8d!2sScreamous%20Flagship%20Store!5e0!3m2!1sid!2sid!4v1685987805883!5m2!1sid!2sid" width="1000px" height="550px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
