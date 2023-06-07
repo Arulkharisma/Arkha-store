@@ -1,6 +1,11 @@
 <?php
 
+session_start();
 include 'koneksi.php';
+
+// if(isset($_SESSION["login"])){
+//     header("Location: 'index.php'");
+// }
 
 if (isset($_POST["input"])) {
 
@@ -15,6 +20,9 @@ if (isset($_POST["input"])) {
 
     //cek Username dan password
     if (mysqli_num_rows($hasil)) {
+        $akun = mysqli_fetch_assoc($hasil);
+        $_SESSION["login"] = $akun;
+
         echo "<meta http-equiv='refresh' content='1;url=index.php'>";
         exit;
         // cek Password

@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'koneksi.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -22,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- JQUERY -->
-    <script src="jquery.min.js"></script>
+   <script src="jquery.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -108,6 +112,8 @@
             padding: 30px 40px;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            /* width: fit-content;
+            overflow: auto; */
         }
 
         .isi-table-tengah {
@@ -125,7 +131,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
@@ -157,7 +162,11 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
+                        <?php if (isset($_SESSION["login"])) : ?>
+                            <a href="logout.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Logout</a>
+                        <?php else : ?>
+                            <a href="login.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Login</a>
+                        <?php endif ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -168,24 +177,26 @@
     </nav>
     <!-- Akhir Navbar -->
 
-    <?php
-    include 'koneksi.php';
-    $id_produk = $_GET["id_produk"];
-    $hasil = mysqli_query($koneksi, "SELECT * FROM data_produk WHERE id_produk ='$id_produk'");
-    $cetak = mysqli_fetch_assoc($hasil);
-    ?>
 
-
-    <section id="keranjang" class="pt-3" style="height: 100vh; background-color: #ffffff;">
+    <section id="keranjang" class="pt-3" style="height: 100vh; background-color: #ffffff; overflow: auto;">
         <div class="container">
 
             <div class="row pt-5 gap-4" style="justify-content: space-between;">
+                <form action="" method="post">
+                    <?php
+                    if (isset($_GET["id_produk"])) {
+                        //mengambil id produk
+                        $id_produk = $_GET["id"];
+                        unset($_SESSION["cart"]["id"]);
 
-                <div class="col-lg-12">
-                    <div class="tampilan-form spinner">
+                        echo "<script type='text/javascript'>
+                                                swal('Dihapus!', 'Produk Berhasil Dihapus Dari Keranjang', 'success');
+                                            </script>";
+                    }
+                    ?>
 
-                        <form action="" method="post">
-
+                    <div class="col-lg-12">
+                        <div class="tampilan-form spinner mt-5">
                             <h3 class="fw-bold mb-4">Detail Keranjang</h3>
 
                             <table class="table">
@@ -195,33 +206,94 @@
                                         <th scope="col">Gambar</th>
                                         <th scope="col">Nama Produk</th>
                                         <th scope="col" class="text-center">Jumlah</th>
+                                        <!-- <th scope="col">Ukruran</th> -->
                                         <th scope="col">Harga</th>
                                         <th scope="col">Sub Harga</th>
                                         <th scope="col"></th>
 
                                     </tr>
                                 </thead>
+                                <?php
+                                if (empty($_SESSION["cart"])) {
+                                    echo "<script type='text/javascript'>
+                                    swal({
+                                        title: 'Keranjang Kosong',
+                                        text: 'Silahkan Memilih Produk Dahulu!',
+                                        icon: 'warning',
+                                        dangerMode: true,
+                                    }).then(okay => {
+                                        if (okay) {
+                                            window.location.href ='shop.php';
+                                        };
+                                    });
+                                    </script>";
+                                } else {
+                                    $subtotal = 0;
+                                    foreach ($_SESSION["cart"] as $id_produk => $jumlah) :
+                                ?>
 
-                                <tr>
-                                    <td class="isi-table-tengah">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                            <label class="form-check-label" for="flexCheckChecked"></label>
-                                        </div>
-                                    </td>
-                                    <td><img src="img/hoodie1.jpeg" width="80px" height="80px" alt=""></td>
-                                    <td class="isi-table-tengah">Hoodie new crown black</td>
-                                    <td class="text-center" style="vertical-align: middle;">
-                                        <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
-                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
-                                        <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
-                                    </td>
-                                    <td class="isi-table-tengah">Rp 300.000</td>
-                                    <td class="isi-table-tengah">Rp 600.000</td>
-                                    <td class="isi-table-tengah"><a href="#"><i class="bi bi-trash"></i></a></td>
-                                </tr>
+                                        <?php
+                                        $query = mysqli_query($koneksi, "SELECT * FROM data_produk WHERE id_produk='$id_produk'");
+                                        $cetak = mysqli_fetch_array($query);
+                                        $subharga = $cetak['harga_produk'] * $jumlah;
+                                        ?>
+                                        <tr>
+                                            <td class="isi-table-tengah">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                                    <label class="form-check-label" for="flexCheckChecked"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <?php if ($cetak['gambar_produk'] != null) { ?>
+                                                    <img width="80px" height="80px" src="./admin/img/fotoProduk/<?= $cetak["gambar_produk"]; ?>">
+                                                <?php }; ?>
+                                            </td>
+                                            <td class="isi-table-tengah">
+                                                <?= $cetak["nama_produk"]; ?>
+                                            </td>
+                                            <td class="text-center" style="vertical-align: middle;">
+                                                <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
+                                                <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
+                                                <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
+                                            </td>
+                                            <!-- <td>
+                                                <?= $_POST["options-outlined"]; ?>
+                                            </td> -->
+                                            <td class="isi-table-tengah">
+                                                <?= $cetak["harga_produk"]; ?>
+                                            </td>
+                                            <td class="isi-table-tengah">
+                                                <?= $subharga ?>
+                                            </td>
+                                            <td class="isi-table-tengah">
+                                                <button onclick="validate();" style="background-color: #ffffff; border: none;"><i class="bi bi-trash"></i></button>
+                                                <script>
+                                                    function validate() {
+                                                        swal({
+                                                                title: "Apakah anda yakin?",
+                                                                text: "Produk akan dihapus dari daftar keranjang",
+                                                                icon: "warning",
+                                                                buttons: true,
+                                                                dangerMode: true,
+                                                            })
+                                                            .then((willDelete) => {
+                                                                if (willDelete) {
+                                                                    window.location.href ="keranjang.php?id=<? echo $cetak['id_produk']; ?>";
+                                                                }
+                                                                // else {
+                                                                //     swal("Your imaginary file is safe!");
+                                                                // }
+                                                            });
+                                                    }
+                                                </script>
+                                            </td>
+                                        </tr>
+                                        <?php $subtotal += $subharga; ?>
+                                    <?php endforeach ?>
+                                <?php } ?>
 
-                                <tr>
+                                <!-- <tr>
                                     <td class="isi-table-tengah">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -238,9 +310,9 @@
                                     <td class="isi-table-tengah">Rp 400.000</td>
                                     <td class="isi-table-tengah">Rp 800.000</td>
                                     <td class="isi-table-tengah"><a href=" #"><i class="bi bi-trash"></i></a></td>
-                                </tr>
+                                </tr> -->
 
-                                <tr>
+                                <!-- <tr>
                                     <td class="isi-table-tengah">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -251,13 +323,13 @@
                                     <td class="isi-table-tengah">Hoodie new crown black</td>
                                     <td class="text-center" style="vertical-align: middle;">
                                         <button type="button" class="btn btn-outline-primary fw-bold" id="minus-btn" style="display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class="bi bi-dash" style="vertical-align: middle;"></i></button>
-                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?php echo $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
+                                        <input type="text" name="stok" id="qty_input" class="form-control input-number text-center border-0" value="1" min="1" max="<?= $cetak['stok_produk']; ?>" style="width: 40px; border-radius: 0; border-color: #0d6efd; display: inline-flex;">
                                         <button type="button" class="btn btn-outline-primary btn-number" id="plus-btn" style=" display: inline-flex; padding: 0px 5px; background-color: royalblue;"><i class=" bi bi-plus" style="vertical-align: middle;"></i></button>
                                     </td>
                                     <td class="isi-table-tengah">Rp 50.000</td>
                                     <td class="isi-table-tengah">Rp 50.000</td>
                                     <td class="isi-table-tengah"><a href=" #"><i class="bi bi-trash"></i></a></td>
-                                </tr>
+                                </tr> -->
 
                             </table>
                             <script>
@@ -289,10 +361,10 @@
                             </script>
 
                             <a href="chekout.php" class="btn text-white me-3 mt-3" style="background-color: royalblue;">Buat Pesanan</a>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
+        </div>
+        </div>
         </div>
     </section>
 

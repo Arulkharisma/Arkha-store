@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include 'koneksi.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -83,6 +87,11 @@
             border-bottom: 2px solid black;
             margin: 0;
         }
+
+        .btnHover:hover {
+            background-color: royalblue;
+            color: white;
+        }
     </style>
 </head>
 
@@ -118,7 +127,11 @@
                         <a class="nav-link list-nav" href="#kontak">Kontak</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="btn btn-outline-primary nav-link ps-3 pe-3">Login</a>
+                        <?php if (isset($_SESSION["login"])) : ?>
+                            <a href="logout.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Logout</a>
+                        <?php else : ?>
+                            <a href="login.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Login</a>
+                        <?php endif ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
@@ -130,7 +143,6 @@
     <!-- Akhir Navbar -->
 
     <?php
-    include 'koneksi.php';
     $id_produk = $_GET["id_produk"];
     $hasil = mysqli_query($koneksi, "SELECT * FROM data_produk WHERE id_produk ='$id_produk'");
     $cetak = mysqli_fetch_assoc($hasil);
@@ -181,19 +193,19 @@
                     </div>
 
                     <div class="mt-2" style="display: flex; flex-direction: row;">
-                        <span class="fs-6 pe-2 me-2" style="border-right: 1px solid #1887d1;">4.9
+                        <span class="fs-6 pe-2 me-2" style="border-right: 1px solid royalblue;">4.9
                             <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                         </span>
-                        <span class="text-secondary pe-2" style="border-right: 1px solid #1887d1;">10 Penilaian</span>
+                        <span class="text-secondary pe-2" style="border-right: 1px solid royalblue;">10 Penilaian</span>
                         <span class="text-secondary ps-1"><?= $cetak["produk_terjual"] ?> Terjual</span>
                     </div>
 
                     <div class="mt-2 pt-2 ps-3 pb-2 pe-3 bg-light flex-row justify-content-center align-items-center">
                         <span class="text-decoration-line-through text-secondary fw-bold"><?= "Rp " . number_format($cetak["harga_normal"], 0, '', '.') ?></span>
-                        <span class="fw-bold fs-3" style="color: #1887d1;">
+                        <span class="fw-bold fs-3" style="color: royalblue;">
                             <?= "Rp " . number_format($cetak["harga_produk"], 0, '', '.') ?>
                         </span>
-                        <span class="ms-3" style="background-color: #1887d1; color: white; padding: 0px 5px 0px 5px; border-radius: 4px; width: max-content; position: relative;">
+                        <span class="ms-3" style="background-color: royalblue; color: white; padding: 0px 5px 0px 5px; border-radius: 4px; width: max-content; position: relative;">
                             40% OFF
                         </span>
                     </div>
@@ -201,7 +213,7 @@
                     <div class="mt-3">
                         <span class="text-secondary">Protection</span>
                         <span class="ms-4">Proteksi Kerusakan+</span>
-                        <span style="background-color: #1887d1; border-radius: 0.5rem; border-bottom-left-radius: 0; color: #fff; font-size: .625rem; font-weight: 500; height: 2rem; line-height: 1rem; margin-left: 0.3140rem; padding: 0 0.3140rem;">
+                        <span style="background-color: royalblue; border-radius: 0.5rem; border-bottom-left-radius: 0; color: #fff; font-size: .625rem; font-weight: 500; height: 2rem; line-height: 1rem; margin-left: 0.3140rem; padding: 0 0.3140rem;">
                             new
                         </span>
                         <a href="#">Learn More</a>
@@ -216,16 +228,16 @@
                         <div class="mt-3">
                             <span class="text-secondary">Ukuran</span>
                             <input type="radio" class="btn-check" name="options-outlined" id="S-outlined" autocomplete="off" checked>
-                            <label class="btn btn-outline-primary ms-5 pt-1 pb-1 pe-4 ps-4" for="S-outlined">S</label>
+                            <label class="btn btn-outline-primary ms-5 pt-1 pb-1 pe-3 ps-3" for="S-outlined">S</label>
 
                             <input type="radio" class="btn-check" name="options-outlined" id="M-outlined" autocomplete="off">
-                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-4 ps-4" for="M-outlined">M</label>
+                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-3 ps-3" for="M-outlined">M</label>
 
                             <input type="radio" class="btn-check" name="options-outlined" id="L-outlined" autocomplete="off">
-                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-4 ps-4" for="L-outlined">L</label>
+                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-3 ps-3" for="L-outlined">L</label>
 
                             <input type="radio" class="btn-check" name="options-outlined" id="XL-outlined" autocomplete="off">
-                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-4 ps-4" for="XL-outlined">XL</label>
+                            <label class="btn btn-outline-primary ms-1 pt-1 pb-1 pe-3 ps-3" for="XL-outlined">XL</label>
                         </div>
 
                         <div class="mt-5 spinner">
@@ -279,24 +291,61 @@
                         </script>
 
                         <div class="mt-5 col-lg-12">
-                            <button type="submit" class="p-3" name="keranjang" style="border: 1px solid #1887d1; background-color: #a5d3f2; cursor: pointer; border-radius: 4px;"><i class=" bi bi-cart-plus "></i> Masukkan Keranjang</button>
-                            <a href="chekout.php"><span class="ms-3 pt-3 pb-3 ps-4 pe-4 text-white tombol" style="border: 1px solid #1887d1; background-color: #1887d1; cursor: pointer; border-radius: 5px;"> Beli Sekarang</span></a>
+                            <button type="submit" class="p-3 btnHover" name="keranjang" style="border: 2px solid royalblue; cursor: pointer; border-radius: 4px;"><i class=" bi bi-cart-plus"></i> Masukkan Keranjang</button>
+                            <button type="submit" class="ms-3 pt-3 pb-3 ps-4 pe-4 text-white tombol" name="beli" style="border: 1px solid black; background-color: royalblue; cursor: pointer; border-radius: 5px;">Beli Sekarang</button>
                         </div>
                     </form>
 
                     <?php
                     if (isset($_POST['keranjang'])) {
-                        $jumlah = $_POST['stok'];
 
-                        if ($jumlah > 0) :
-                    ?>
+
+                        if (!isset($_SESSION['login'])) {
+                            echo " 
                             <script type='text/javascript'>
-                                swal("Di masukkan ke keranjang", "Klik Ok Untuk Melanjutkan", "success");
+                                swal('Anda belum login', 'login terlebih dahulu', 'info')
+                                .then((value) => {
+                                    document.location.href='login.php';
+                                });
                             </script>
-                    <?php
-                        endif;
-                        
+                            ";
+                        } else {
+                            $jumlah = $_POST['stok'];
+                            if (isset($_SESSION['cart'][$id_produk])) {
+                                $_SESSION['cart'][$id_produk] += $jumlah;
+                            } else {
+                                $_SESSION['cart'][$id_produk] = $jumlah;
+                            }
+                            echo "
+                        <script type='text/javascript'>swal('','Produk Sudah di Masukkan ke keranjang ', 'success');
+                        </script>";
+                        }
                     }
+
+
+                    if (isset($_POST['beli'])) {
+
+                        if (!isset($_SESSION['login'])) {
+                            echo " 
+                            <script type='text/javascript'>
+                                swal('Anda belum login', 'login terlebih dahulu', 'info')
+                                .then((value) => {
+                                    document.location.href='login.php';
+                                });
+                            </script>
+                            ";
+                        } else {
+                            $jumlah = $_POST['stok'];
+
+                            if (isset($_SESSION['cart'][$id])) {
+                                $_SESSION['cart'][$id_produk] += $jumlah;
+                            } else {
+                                $_SESSION['cart'][$id_produk] = $jumlah;
+                            }
+                            echo "<script>location='keranjang.php';</script>";
+                        }
+                    }
+
                     ?>
 
                     <div class="pt-3" style="border-top: 1px solid rgb(205, 205, 205); margin-top: 5rem;">

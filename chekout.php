@@ -81,7 +81,7 @@
         }
 
         .border-b {
-            border-bottom: 1px solid black;
+            border-bottom: 2px solid royalblue;
             width: max-content;
         }
 
@@ -221,7 +221,7 @@
                             <textarea class="form-control" placeholder="Masukkan alamat lengkap" id="alamat" rows="3" name="alamat"></textarea>
                         </div>
 
-                        <button type="submit" class="btn text-white me-3 mt-3" style="background-color: #1887d1;" name="input">Buat Pesanan</button>
+                        <button type="submit" class="btn text-white me-3 mt-3" style="background-color: royalblue;" name="input">Buat Pesanan</button>
 
                     </form>
                 </div>
