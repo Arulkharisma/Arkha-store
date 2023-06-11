@@ -1,3 +1,8 @@
+<?php
+session_start();
+include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +21,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="jquery.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap');
@@ -85,6 +91,10 @@
             width: max-content;
         }
 
+        .isi-table-tengah {
+            vertical-align: middle;
+        }
+
         .tampilan-form {
             background-color: #ffffff;
             padding: 30px 40px;
@@ -95,80 +105,8 @@
 
 <body>
 
-    <?php
-    include 'koneksi.php';
-
-    $select = mysqli_query($koneksi, "SELECT * FROM kategori");
-
-    if (isset($_POST["input"])) {
-
-        $idkategori = htmlspecialchars($_POST["id_kategori"]);
-        $nama_penerima = htmlspecialchars($_POST["nama_penerima"]);
-        $no_hp = htmlspecialchars($_POST["no_hp"]);
-        $provinsi = htmlspecialchars($_POST["provinsi"]);
-        $kota = htmlspecialchars($_POST["kota"]);
-        $kecamatan = htmlspecialchars($_POST["kecamatan"]);
-        $kode_pos = htmlspecialchars($_POST["kode_pos"]);
-        $alamat = ($_POST["alamat"]);
-
-
-        $query = "INSERT INTO data_produk (id_produk,id_kategori,nama_produk,harga_produk,stok_produk,produk_terjual,gambar_produk, deskripsi_produk) VALUE('','$idkategori','$namaProduk', '$harga', '$stok','$produkTerjual', '$gambarProduk', '$deskripsi')";
-
-        mysqli_query($koneksi, $query);
-        if ($query > 0) {
-            echo "
-                <script>
-                alert('Data Berhasil di tambahkan');
-                </script>";
-        } else {
-            echo "
-                <script>
-                alert('Data Gagal di tambahkan');
-                </script>";
-        }
-    }
-    ?>
-
     <!-- Navbar -->
-
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse me-5" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link list-nav " aria-current="page" href="index.php">Home</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link list-nav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kategori <i class="bi bi-chevron-down text-black"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="T-shirt.php">T-Shirt</a></li>
-                            <li><a class="dropdown-item" href="celana.php">Celana</a></li>
-                            <li><a class="dropdown-item" href="hoodie.php">Hoodie/Jacket</a></li>
-                            <li><a class="dropdown-item" href="aksesoris.php">Aksesoris</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link list-nav" href="alamat.php">Alamat</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link list-nav" href="#kontak">Kontak</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid #1887d1; border-radius: 10px;">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php require 'navbar.php'; ?>
     <!-- Akhir Navbar -->
 
 
@@ -185,7 +123,8 @@
 
                     <form method="post" action="" enctype="multipart/form-data">
 
-
+                        <input type="hidden" name="subtotal" id="subtotal_value">
+                        <input type="hidden" name="ongkir" id="ongkir_value">
                         <div class="mb-2">
                             <label for="nama_penerima" class="form-label">Nama</label>
                             <input type="text" placeholder="nama lengkap" class="form-control" id="nama_penerima" name="nama_penerima" autocomplete="off" required>
@@ -221,7 +160,7 @@
                             <textarea class="form-control" placeholder="Masukkan alamat lengkap" id="alamat" rows="3" name="alamat"></textarea>
                         </div>
 
-                        <button type="submit" class="btn text-white me-3 mt-3" style="background-color: royalblue;" name="input">Buat Pesanan</button>
+                        <button class="btn text-white me-3 mt-3" style="background-color: royalblue;" name="pesan">Buat Pesanan</button>
 
                     </form>
                 </div>
@@ -241,24 +180,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img src="img/hoodie1.jpeg" width="50px" height="50px" alt=""></td>
-                                    <td>Hoodie new crown black</td>
-                                    <td>2</td>
-                                    <td>Rp 300.000</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/celana3.jpeg" width="50px" height="50px" alt=""></td>
-                                    <td> Unclejin Hoodie new crown black</td>
-                                    <td>2</td>
-                                    <td>Rp 400.000</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/thsirt4.jpeg" width="50px" height="50px" alt=""></td>
-                                    <td>Hoodie new crown black</td>
-                                    <td>1</td>
-                                    <td>Rp 50.000</td>
-                                </tr>
+
+                                <?php
+                                $subtotal = 0;
+                                foreach ($_SESSION['cart'] as $id_produk => $jumlah) : ?>
+                                    <?php
+                                    $query = mysqli_query($koneksi, "SELECT * FROM data_produk WHERE id_produk = '$id_produk'");
+                                    $cetak = mysqli_fetch_array($query);
+                                    $subharga = $cetak["harga_produk"] * $jumlah;
+                                    ?>
+
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            if ($cetak['gambar_produk'] != null) : ?>
+                                                <img src="./admin/img/fotoProduk/<?= $cetak["gambar_produk"]; ?>" width="50px" height="50px" alt="">
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="isi-table-tengah">
+                                            <?= $cetak["nama_produk"]; ?>
+                                        </td>
+                                        <td class="isi-table-tengah"><?= $jumlah; ?></td>
+                                        <td class="isi-table-tengah"><?= "Rp " . number_format($subharga, 0, '', '.'); ?></td>
+                                    </tr>
+                                    <?php $subtotal += $subharga; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -266,17 +212,20 @@
                     <div class="mt-4 tampilan-form">
                         <h5 class="fw-bold">Rincian Pembayaran</h5>
                         <table class="table">
+                            <?php
+                            $biaya_pengiriman = 10000;
+                            ?>
                             <tr>
                                 <td>Subtotal Produk</td>
-                                <td class="text-end">RP 300.000</td>
+                                <td class="text-end"><?php echo "Rp " . number_format($subtotal, 0, '', '.'); ?></td>
                             </tr>
                             <tr>
                                 <td>Biaya Pengiriman</td>
-                                <td class="text-end">RP 400.000</td>
+                                <td class="text-end"><?= "Rp " . number_format($biaya_pengiriman, 0, '', '.'); ?></td>
                             </tr>
                             <tr>
                                 <td>Total Pembayaran</td>
-                                <td class="text-end fw-bold">Rp 700.000</td>
+                                <td class="text-end fw-bold"><?= "Rp " . number_format($subtotal + $biaya_pengiriman, 0, '', '.') ?></td>
                             </tr>
                         </table>
 
@@ -286,6 +235,67 @@
             </div>
         </div>
     </section>
+
+    <?php
+
+    if (isset($_POST["pesan"])) {
+
+        $id_pelanggan = $_SESSION['login']['id_user'];
+        $nama_penerima = htmlspecialchars($_POST["nama_penerima"]);
+        $no_hp = htmlspecialchars($_POST["no_hp"]);
+        $provinsi = htmlspecialchars($_POST["provinsi"]);
+        $kota = htmlspecialchars($_POST["kota"]);
+        $kecamatan = htmlspecialchars($_POST["kecamatan"]);
+        $kode_pos = htmlspecialchars($_POST["kode_pos"]);
+        $alamat = htmlspecialchars($_POST["alamat"]);
+        $ongkir = $biaya_pengiriman;
+        $total_order = $subtotal;
+        $status = "Belum Dibayar";
+
+        //simpan data ke user
+        $query1 = "INSERT INTO user_order (id_user, nama_penerima, kota, provinsi, kecamatan, kode_pos, alamat, phone, ongkir, total_order, status) VALUES('$id_pelanggan','$nama_penerima', '$kota', '$provinsi','$kecamatan', '$kode_pos', '$alamat',$no_hp, '$ongkir', '$total_order', '$status')";
+        $hasil = mysqli_query($koneksi, $query1);
+
+        //mengambil id order
+        $id_order = $koneksi->insert_id;
+
+        //simpan id order
+        foreach ($_SESSION['cart'] as $id_produk2 => $jumlah2) :
+            //mendapatkan data produk berdasarkan id produk
+            $ambil = "SELECT * FROM data_produk WHERE id_produk = '$id_produk2'";
+            $hasil2 = mysqli_query($koneksi, $ambil);
+            $data = mysqli_fetch_array($hasil2);
+
+            $nama_produk = $data['nama_produk'];
+            $harga = $data['harga_produk'];
+            $subharga2 = $harga * $jumlah2;
+
+            $query3 = "INSERT INTO detail_order (id_order,id_produk, nama_produk, harga_produk, jumlah, subharga) VALUES('$id_order','$id_produk2', '$nama_produk','$harga','$jumlah2','$subharga2')";
+            $hasil3 = mysqli_query($koneksi, $query3);
+
+            //update stok
+            $query4 = "UPDATE data_produk SET stok_produk = stok_produk - $jumlah2 WHERE id_produk ='$id_produk2'";
+            $hasil4 = mysqli_query($koneksi, $query4);
+        endforeach;
+
+        //mengosongkan keranjang
+        unset($_SESSION['cart']);
+
+        //redirect ke halamn nota pembayaran
+        echo "<script type='text/javascript'>
+                            swal({
+                                title: 'Pemesanan Berhasil',
+                                text: 'Barang akan segera kami kirimkan',
+                                icon: 'success',
+                                button: false
+                            });
+                            </script>";
+        echo "<meta http-equiv='refresh' content='1; url=pembayaran.php?id=$id_order'>";
+    }
+    ?>
+
+    <!-- footer -->
+    <?php require 'footer.php'; ?>
 
     <!-- js bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

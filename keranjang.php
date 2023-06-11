@@ -127,55 +127,12 @@ include 'koneksi.php';
             height: 18px;
         }
     </style>
-    </style>
 
 </head>
 
 <body>
     <!-- Navbar -->
-
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4 text-poppins" href="index.php"><img src="img/logo.png" alt="Logo" width="35px" height="30px" class="d-inline-block align-text-top me-1"><span style="color:royalblue">Arkha</span><span style="color: hotpink;">&co</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse me-5" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link list-nav" aria-current="page" href="index.php">Home</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link list-nav" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kategori <i class="bi bi-chevron-down text-black"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="T-shirt.php">T-Shirt</a></li>
-                            <li><a class="dropdown-item" href="celana.php">Celana</a></li>
-                            <li><a class="dropdown-item" href="hoodie.php">Hoodie/Jacket</a></li>
-                            <li><a class="dropdown-item" href="aksesoris.php">Aksesoris</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link list-nav" href="alamat.php">Alamat</a>
-                    </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link list-nav" href="#kontak">Kontak</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php if (isset($_SESSION["login"])) : ?>
-                            <a href="logout.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Logout</a>
-                        <?php else : ?>
-                            <a href="login.php" class="nav-link ps-3 pe-3 navbtn" style="border: 2px solid royalblue; border-radius: 10px; color: #000000;">Login</a>
-                        <?php endif ?>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="keranjang.php"><img src="img/basket.png" alt="Keranjang" width="28px" height="28px"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php require 'navbar.php'; ?>
     <!-- Akhir Navbar -->
 
 
@@ -258,10 +215,10 @@ include 'koneksi.php';
                                                 <?= $_POST["options-outlined"]; ?>
                                             </td> -->
                                         <td class="isi-table-tengah">
-                                            <?= $cetak["harga_produk"]; ?>
+                                            <?= "Rp " . number_format($cetak["harga_produk"], 0, '', '.'); ?>
                                         </td>
                                         <td class="isi-table-tengah">
-                                            <?= $subharga ?>
+                                            <?= "Rp " . number_format($subharga, 0, '', '.'); ?>
                                         </td>
                                         <td class="isi-table-tengah">
                                             <!-- <a href="keranjang.php"></a> -->
@@ -339,65 +296,23 @@ include 'koneksi.php';
                         </script>
 
                         <a href="index.php" class="btn text-white me-3 mt-3" style="background-color: royalblue;">Lanjut Belanja</a>
-                        <a href="chekout.php" class="btn text-white me-3 mt-3" style="background-color: royalblue;">Buat Pesanan</a>
+                        <?php 
+                        
+                        if(isset($_SESSION["cart"])){
+                            echo"<a href='chekout.php' class='btn text-white me-3 mt-3' style='background-color: royalblue;'>Buat Pesanan</a>";
+                        }
+
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer id="kontak" class="pb-3 bg-light">
-        <div class="container pt-3" style="border-bottom: 1px solid grey;">
-            <div class="row offset-md-1">
-
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                    <p class="fw-bold garisbawah">Informasi</p>
-                    <li class="list-group-item">Konfirmasi Pembayaran</li>
-                    <li class="list-group-item ">Syarat Ketentuan Retur</li>
-                    <li class="list-group-item ">Pengiriman</li>
-                    <li class="list-group-item">bagaimana cara order</li>
-                </div>
-
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                    <p class="fw-bold garisbawah">Social Media</p>
-                    <li class="list-group-item"><a href="https://www.instagram.com/arulkharisma/"><i class="bi bi-instagram me-2 icon"></i> Instagram</a></li>
-                    <li class="list-group-item"><a href="https://www.facebook.com/Arul/"><i class="bi bi-facebook me-2 icon"></i> Facebook</a></li>
-                    <li class="list-group-item"><a href="https://www.twitter.com/arulkharisma/"><i class="bi bi-twitter me-2 icon"></i> Twitter</a></li>
-                    <li class="list-group-item"><a href="https://wa.me/087846079991"><i class="bi bi-whatsapp me-2 icon"></i> Whatsapp</a></li>
-                </div>
-
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                    <p class="fw-bold garisbawah">Kontak</p>
-                    <li class="list-group-item"><i class="bi bi-telephone-fill me-2 icon"></i> 087846079991</a></li>
-                    <li class="list-group-item"><i class="bi bi-envelope me-2 icon"></i> arulkharisma01@gmail.com</a></li>
-                    <li class="list-group-item"><i class="bi bi-geo-alt-fill me-2 icon"></i> Jl.raya Lembar Mataram</li>
-                </div>
-
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mb-3 mb-5 mt-3">
-                    <p class="fw-bold garisbawah">Pembayaran</p>
-                    <li class="list-group-item mb-1"><img src="img/seabank.png" alt="seabank"> <img src="img/bca.png" alt="bca"> <img src="img/bni.png" alt="bni"></li>
-                    <li class="list-group-item mb-1"><img src="img/bri.png" alt="bri"> <img src="img/cimniaga.png" alt="cimbniaga"> <img src="img/visa.png" alt="visa"></li>
-                    <li class="list-group-item mb-4 mb-1"><img src="img/indomaret.png" alt="indomaret"> <img src="img/alfamart.png" alt="alfamart"></li>
-
-                    <p class="fw-bold garisbawah">Pengiriman</p>
-                    <li class="list-group-item mb-1"><img src="img/jne.png" alt="jne"> <img src="img/jnt.png" alt=" jnt">
-                        <img src="img/jntcargo.png" alt="">
-                    </li>
-                    <li class="list-group-item mb-1"><img src="img/anteraja.png" alt="anteraja"> <img src="img/indopaket.png" alt="indopaker"> <img src="img/ninjaexpres.png" alt="ninjaexpres"></li>
-                    <li class="list-group-item mb-1"><img src="img/idexpres.png" alt="idexpres"></li>
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <p class="text-center pt-3 mt-3">&copy; 2022 . <span class="text-primary fw-bold">Arkha</span><span class="fw-bold" style="color: black;">&co</span></p>
-
-        </p>
-
-    </footer>
-
-    <!-- Akhir footer -->
-
+    
+    <!-- footer -->
+    <?php
+    require 'footer.php';
+    ?>
 
     <!-- link script bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
