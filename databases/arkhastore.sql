@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2023 at 08:36 PM
+-- Generation Time: Jun 11, 2023 at 06:17 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -24,11 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bukti_pembayaran`
+--
+
+CREATE TABLE `bukti_pembayaran` (
+  `id_pembayaran` int(25) NOT NULL,
+  `id_order` int(20) NOT NULL,
+  `nama_pembayar` varchar(30) NOT NULL,
+  `nama_bank` varchar(25) NOT NULL,
+  `jumlah_pembayaran` int(35) NOT NULL,
+  `bukti_transfer` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bukti_pembayaran`
+--
+
+INSERT INTO `bukti_pembayaran` (`id_pembayaran`, `id_order`, `nama_pembayar`, `nama_bank`, `jumlah_pembayaran`, `bukti_transfer`) VALUES
+(1, 7, 'arul', 'Sea Bank', 125000, 't06bocoran.png'),
+(2, 9, 'imam', 'Sea Bank', 135000, 'ttd manager.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `data_produk`
 --
 
 CREATE TABLE `data_produk` (
-  `id_produk` int(100) NOT NULL,
+  `id_produk` int(50) NOT NULL,
   `id_kategori` int(20) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `harga_produk` int(50) NOT NULL,
@@ -53,17 +76,42 @@ INSERT INTO `data_produk` (`id_produk`, `id_kategori`, `nama_produk`, `harga_pro
 (15, 1, 'Unclejin T-shirt Paradeise White', 100000, 150000, 18, 20, 0x546873697274322e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Tshirt With Rubber Screnprinted</p>\r\n                <p>Material : Cotton Combed 30s</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (17, 2, 'Unclejin Boardshort Army', 125000, 175000, 3, 19, 0x63656c616e61342e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Boardshort</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (18, 2, 'Unclejin Boardshot Black', 125000, 175000, 1, 21, 0x63656c616e61332e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Boardshort</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
-(19, 2, 'Unclejin Longpants Chino Army', 175000, 250000, 15, 0, 0x63656c616e61322e6a706567, '<p class=\"mb-0 mt-2\">Oversized Longpants </p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
+(19, 2, 'Unclejin Longpants Chino Army', 175000, 250000, 14, 0, 0x63656c616e61322e6a706567, '<p class=\"mb-0 mt-2\">Oversized Longpants </p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (20, 2, 'Unclejin Longpants Chino Black', 175000, 250000, 12, 14, 0x63656c616e6120312e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Chino Longpants</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (21, 3, 'Unclejin Hoodie BlockScript Black', 250000, 475000, 2, 6, 0x686f6f646965322e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Hoodie With Rubber screnprinted</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (22, 1, 'Unclejin Tshirt Maroon Basic', 100000, 150000, 15, 25, 0x547368697274372e6a706567, '<p class=\"mb-0 mt-2\">Regular fit T-shirt Rubber screnprinted</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (23, 1, 'Unclejin T-shirt Yellow basic', 100000, 150000, 5, 35, 0x746873697274342e6a706567, '<p class=\"mb-0 mt-2\">Regular T-shirt With Rubber screnprinted</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
-(24, 4, 'Unclejin Watch Black and White Basic ', 125000, 175000, 12, 3, 0x616b7365736f726973372e6a706567, '<p class=\"mb-0 mt-2\"></p>\r\n       \r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
-(26, 4, 'Unclejin Totebag Army Basic', 135000, 160000, 6, 17, 0x616b7365736f726973382e6a706567, '<p class=\"mb-0 mt-2\"></p>\r\n             \r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
+(24, 4, 'Unclejin Watch Black and White Basic ', 125000, 175000, 11, 3, 0x616b7365736f726973372e6a706567, '<p class=\"mb-0 mt-2\"></p>\r\n       \r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
+(26, 4, 'Unclejin Totebag Army Basic', 135000, 160000, 5, 17, 0x616b7365736f726973382e6a706567, '<p class=\"mb-0 mt-2\"></p>\r\n             \r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (27, 3, 'Unclejin Hoodie Basic', 250000, 475000, 2, 12, 0x686f6f646965312e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Hoodie With Rubber screnprinted</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (28, 3, 'Unclejin Coach Jacket Basic Black', 275000, 495000, 25, 0, 0x70726f64756b20392e6a7067, '<p class=\"mb-0 mt-2\">Regular fit Coach Jacket</p>\r\n                <p>Material : Micro/ paracute</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
 (29, 4, 'Unclejin Polocaps black', 100000, 130000, 12, 35, 0x616b7365736f726973312e6a706567, '<p class=\"mb-0 mt-2\">Material Flece</p>\r\n\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>'),
-(30, 4, 'Slingbag Black Basic', 125000, 175000, 1, 49, 0x616b7365736f726973352e6a706567, '<p class=\"mb-0 mt-2\">Material : Paracute</p>\r\n             \r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>');
+(33, 4, 'Unclejin Kursi Camping Kokoh', 300000, 450000, 3, 0, 0x363438356431653736356566342e6a706567, '<p class=\"mb-0 mt-2\">Regular fit Hoodie With Rubber screnprinted</p>\r\n                <p>Material : Cotton Flece</p>\r\n                <p>PENTING :</p>\r\n                <p class=\"mb-0\">-Konfirmasi terlebih dahulu sebelum melakukan transaksi melalui chat terutama untuk size dan jenis artikel yang tersedia.</p>\r\n                <p class=\"mb-0\">-pastikan telah mengisi alamat dengan benar dan lengkap untuk memudahkan kurir dalam mengirim barang.</p>\r\n                <p class=\"mb-0\">-Warna produk yang sebenarnya mungkin tidak 100% sama seperti yang terlihat pada gambar, hal ini di sebabkan faktor pencahayaan saat pengambilan gambar serta kualitas layar\r\n                    gadget yang digunakan untuk melihat gambar\r\n                </p>\r\n                <p class=\"mb-0\">-Untuk membeli beberapa produk/warna sekaligus dalam 1 pesanan, silakan klik masukkan ke keranjang untuk setiap\r\n                    produk/warna yang diinginkan, kami tidak menerima permintaan warna lewat pesan</p>\r\n                <p class=\"mb-0\">- Pesanan yang telah dibuat tidak dapat diUBAH kembali</p>\r\n                <p class=\"mb-0\">- Jika barang yang kamu terima tidak sesuai pesanan maka silakan ajukan pengembalian barang & dana (jangan klik pesanan\r\n                    diterima)</p>\r\n                <p class=\"mb-0\">- Siapkan Video Unboxing sebagai antisipasi/bukti apabila barang yang diterima tidak sesuai/cacat</p>\r\n                <p class=\"mb-0\">- Jika kamu membeli maka kamu telah setuju dengan kebijakan UNCLEJIN STORE.</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_order`
+--
+
+CREATE TABLE `detail_order` (
+  `id_detail_order` int(20) NOT NULL,
+  `id_order` int(20) NOT NULL,
+  `id_produk` int(50) NOT NULL,
+  `nama_produk` varchar(100) NOT NULL,
+  `harga_produk` int(20) NOT NULL,
+  `jumlah` int(20) NOT NULL,
+  `subharga` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_order`
+--
+
+INSERT INTO `detail_order` (`id_detail_order`, `id_order`, `id_produk`, `nama_produk`, `harga_produk`, `jumlah`, `subharga`) VALUES
+(3, 6, 27, 'Unclejin Hoodie Basic', 250000, 1, 250000),
+(4, 7, 24, 'Unclejin Watch Black and White Basic ', 125000, 1, 125000),
+(6, 9, 26, 'Unclejin Totebag Army Basic', 135000, 1, 135000);
 
 -- --------------------------------------------------------
 
@@ -94,7 +142,6 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
 
 CREATE TABLE `user` (
   `id_user` int(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -103,8 +150,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `username`, `password`) VALUES
-(2, 'Arul Kharisma', 'arul@gmail.com', '123456');
+INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
+(3, 'arul', '123'),
+(4, 'ti', '123');
 
 -- --------------------------------------------------------
 
@@ -118,19 +166,34 @@ CREATE TABLE `user_order` (
   `nama_penerima` varchar(50) NOT NULL,
   `kota` varchar(50) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
+  `kecamatan` varchar(50) NOT NULL,
   `kode_pos` int(6) NOT NULL,
-  `alamat` int(50) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
   `phone` int(25) NOT NULL,
-  `tgl_order` date NOT NULL,
   `ongkir` int(50) NOT NULL,
   `total_order` int(50) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `no_resi` varchar(25) NOT NULL
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_order`
+--
+
+INSERT INTO `user_order` (`id_order`, `id_user`, `nama_penerima`, `kota`, `provinsi`, `kecamatan`, `kode_pos`, `alamat`, `phone`, `ongkir`, `total_order`, `status`) VALUES
+(6, 3, 'q', 'li', 'kj', 'kf', 52, '0', 14, 10000, 250000, 'Produk Diterima'),
+(7, 3, 'Siapa ya', '83364', 'kalimantan', 'Lembar', 8456, 'Jl Raya Lembar Mataram No 908', 87, 10000, 125000, 'Sudah Dibayar'),
+(9, 4, 'imam', 'muntilan', 'magelang', 'bojong', 54617, 'Jl Raya Lembar Mataram', 123, 10000, 135000, 'Sudah Dibayar');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bukti_pembayaran`
+--
+ALTER TABLE `bukti_pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`),
+  ADD KEY `id_order` (`id_order`);
 
 --
 -- Indexes for table `data_produk`
@@ -138,6 +201,14 @@ CREATE TABLE `user_order` (
 ALTER TABLE `data_produk`
   ADD PRIMARY KEY (`id_produk`),
   ADD KEY `id_kategori` (`id_kategori`);
+
+--
+-- Indexes for table `detail_order`
+--
+ALTER TABLE `detail_order`
+  ADD PRIMARY KEY (`id_detail_order`),
+  ADD KEY `id_order` (`id_order`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `kategori`
@@ -163,10 +234,22 @@ ALTER TABLE `user_order`
 --
 
 --
+-- AUTO_INCREMENT for table `bukti_pembayaran`
+--
+ALTER TABLE `bukti_pembayaran`
+  MODIFY `id_pembayaran` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `data_produk`
 --
 ALTER TABLE `data_produk`
-  MODIFY `id_produk` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_produk` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `detail_order`
+--
+ALTER TABLE `detail_order`
+  MODIFY `id_detail_order` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -178,23 +261,36 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_order`
 --
 ALTER TABLE `user_order`
-  MODIFY `id_order` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `bukti_pembayaran`
+--
+ALTER TABLE `bukti_pembayaran`
+  ADD CONSTRAINT `bukti_pembayaran_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `user_order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `data_produk`
 --
 ALTER TABLE `data_produk`
   ADD CONSTRAINT `data_produk_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `detail_order`
+--
+ALTER TABLE `detail_order`
+  ADD CONSTRAINT `detail_order_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `user_order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detail_order_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `data_produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_order`

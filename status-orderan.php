@@ -218,9 +218,9 @@ if (!$data) {
                                         <?php if ($cetak['status'] == 'Belum Dibayar') { ?>
                                             <a href='konfirmasi-pembayaran.php?id=<?php echo $id_order; ?>' class='p-1 text-white tombol-hover' style='background-color: royalblue; border-radius: 5px;'>Konfirmasi Pembayaran</a>
                                         <?php } elseif ($cetak['status'] == 'Sudah Dibayar' || $cetak['status'] == 'Menyiapkan Produk') { ?>
-                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="p-1 text-white tombol-hover bg-secondary" style="border-radius: 5px;">Nota</a>
+                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="pe-2 ps-2 text-white tombol-hover bg-secondary" style="border-radius: 5px;">Nota</a>
                                         <?php } elseif ($cetak['status'] == 'Produk Dikirim') { ?>
-                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="p-1 text-white tombol-hover bg-secondary" style="border-radius: 5px;">Nota</a>
+                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="ps-2 pe-2 text-white tombol-hover bg-secondary" style="border-radius: 5px;">Nota</a>
                                             <button class=" btn btn-danger btn-sm p-1 text-white tombol-hover" style="border-radius: 5px; vertical-align: baseline;" onclick="validate();">Pesanan Diterima</button>
 
                                             <script>
@@ -250,7 +250,7 @@ if (!$data) {
                                                 }
                                             </script>
                                         <?php } elseif ($cetak['status'] == 'Produk Diterima') { ?>
-                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="btn btn-success btn-sm p-1" style="border-radius: 5px; vertical-align: baseline;">Nota</a>
+                                            <a href="nota-order.php?id=<?php echo $id_order; ?>" class="ps-2 pe-2 text-white tombol-hover bg-secondary" style="border-radius: 5px; vertical-align: baseline;">Nota</a>
                                         <?php } ?>
                                     </td>
                                 </tr>

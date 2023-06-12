@@ -2,7 +2,7 @@
 Ini adalah proyek web toko online sederhana yang dibangun menggunakan PHP. Proyek ini dibuat sebgai tugas kuliah untuk mempelajari konsep dan implementasi dasar pengngembangan web dengan menggunakan bahasa pemrograman PHP.
 
 # Sumber Gambar
-* Shopeev
+* Shopee
 * Unclejin
 * Screamous
 * JB Store
@@ -10,6 +10,6 @@ Ini adalah proyek web toko online sederhana yang dibangun menggunakan PHP. Proye
 # Fitur
 * Registrasi pengguna baru
 * Login dan logut pengguna
-* Penambahan Produk Kedalam keranhana belanja
+* Penambahan Produk Kedalam keranjang belanja
 * Proses Chekcout 
 * pengaturan dan pengeloaan produk oleh admin

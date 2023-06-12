@@ -126,12 +126,12 @@ include 'koneksi.php';
 
     <!-- Opsi background pertama -->
     <!-- <section id="home" style="background: #f8f9fa; backdrop-filter: blur(125px);"> -->
-    <section id="home" class="pt-1" style="background-color: #1b2b3b;">
+    <section id="home" class="pt-1" style="background-color: #1b2b3b; width: 100%; height: 100vh;">
 
         <div class="container">
             <div class="row pt-5">
-                <div class="col-lg-6 mt-4 justify-content-center text-poppins">
-                    <p class="pt-5 mt-5 text-white fst-italic">Hallo, Selamat Datang di Store Online Kami </p>
+                <div class="col-lg-6 mt-4 text-poppins" style=" display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <p class=" text-white fst-italic">Hallo, Selamat Datang di Store Online Kami </p>
                     <h1 class="fw-bold" data-aos="fade-right" data-aos-duration="1000">
                         <span style="color: hotpink;">Temukan</span>
                         <span style="color: royalblue;">Outfit</span><br>
@@ -184,7 +184,7 @@ include 'koneksi.php';
 
     <!-- produk terbaru -->
 
-    <section id="produkTerbaru" class="pt-lg-3 mb-5 mt-3">
+    <section id="produkTerbaru" class="pt-lg-3 mb-5 mt-3" style="height: auto;">
         <div class="container">
             <div class="row mt-lg-5 text-center justify-content-center">
                 <div class="col">

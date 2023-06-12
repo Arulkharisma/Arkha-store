@@ -222,8 +222,8 @@ include 'koneksi.php';
                                     $ongkir = 10000;
                                     ?>
                                     <p>Rp <?= number_format($subtotal); ?></p>
-                                    <p><?= number_format($ongkir); ?></p>
-                                    <p><?= number_format($data_order['total_order']); ?></p>
+                                    <p>Rp <?= number_format($ongkir); ?></p>
+                                    <p>Rp <?= number_format($data_order['total_order']); ?></p>
                                 </div>
                             </div>
 
